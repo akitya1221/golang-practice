@@ -48,4 +48,47 @@ func main() {
 
 	// 関数の呼び出し
 	outer()
+
+	// 複数行の文字列を表示したい場合
+	fmt.Println(`test
+	test
+	test`)
+
+	// 文字の切り出し
+	// ※string()をつけない場合、バイト型で表示される
+	fmt.Println(string(s[0]))
+
+	// byte型
+	// スライス（配列）
+	byteA := []byte{72, 73}
+	fmt.Println(byteA)
+
+	// string型をbyte型に変換
+	c := []byte("HI")
+	fmt.Println(c)
+
+	// 配列型
+	var arr1 [3]int
+	fmt.Println(arr1)
+	var arr2 [3]string = [3]string{"A", "B"}
+	fmt.Println(arr2)
+	arr3 := [3]int{1, 2, 3}
+	fmt.Println(arr3)
+	arr4 := [...]string{"c", "d"}
+	fmt.Println(arr4)
+
+	arr2[2] = "C"
+	fmt.Println(arr2)
+
+	// 要素数の取得
+	fmt.Println(len(arr4))
+
+	// interface型
+	// 特殊な型でいろんな型と互換性があるのが特徴
+	var x interface{}
+	x = 1
+	x = 0.1
+	x = "test"
+	x = [3]int{1, 2, 3}
+	fmt.Println(x)
 }
