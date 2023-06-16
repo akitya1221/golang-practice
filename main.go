@@ -6,9 +6,51 @@ import (
 	"time"
 )
 
+// 定数
+const (
+	// iotaは連続した整数の連番を生成してくれる
+	c0 = iota
+	c1
+	c2
+)
+
 func outer() {
 	var s4 string = "outer"
 	fmt.Println(s4)
+}
+
+// 関数
+// 戻り値の型は()の右側に記載する
+func Sum(x int, y int) int {
+	return x + y
+}
+
+// 複数の戻り値がある場合
+func Div(x, y int) (int, int) {
+	q := x / y
+	r := x % y
+	return q, r
+}
+
+// 関数を返す関数
+func ReturnFunc() func() {
+	return func() {
+		fmt.Println("return function")
+	}
+}
+
+// 引数に関数を使用する関数
+func CallFunc(f func()) {
+	f()
+}
+
+// クロージャー、ジェネレーター
+func integers() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
 }
 
 func main() {
@@ -91,4 +133,41 @@ func main() {
 	x = "test"
 	x = [3]int{1, 2, 3}
 	fmt.Println(x)
+
+	// 定数
+	fmt.Println(c0, c1, c2)
+
+	// 複数の戻り値がある場合
+	t_int1, t_int2 := Div(2, 3)
+	fmt.Println(t_int1, t_int2)
+	// 戻り値の破棄
+	// 「_」を使用することで、戻り値を破棄することができる
+	t_int3, _ := Div(2, 3)
+	fmt.Println(t_int3)
+
+	// 無名関数
+	test_func1 := func(x1, y1 int) int {
+		return x1 + y1
+	}
+	func_result := test_func1(1, 2)
+	fmt.Println(func_result)
+	// 値を渡してしまうことも可能
+	test_func2 := func(x1, y1 int) int {
+		return x1 + y1
+	}(1, 2)
+	fmt.Println(test_func2)
+
+	// 関数を返す関数
+	return_func := ReturnFunc()
+	fmt.Println(return_func)
+
+	// 引数に関数を使用する関数
+	CallFunc(return_func)
+
+	// クロージャー、ジェネレーター
+	ints := integers()
+	fmt.Println(ints())
+	fmt.Println(ints())
+	fmt.Println(ints())
+	fmt.Println(ints())
 }
