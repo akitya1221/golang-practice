@@ -170,4 +170,47 @@ func main() {
 	fmt.Println(ints())
 	fmt.Println(ints())
 	fmt.Println(ints())
+
+	// for文
+	j := 0
+	for {
+		j++
+		if j == 5 {
+			break
+		}
+		fmt.Println("Loop")
+	}
+
+	point := 0
+	for point < 5 {
+		fmt.Println(point)
+		point++
+	}
+
+	for j := 0; j < 5; j++ {
+		if j == 3 {
+			continue
+		}
+		fmt.Println(j)
+	}
+
+	arr := [5]int{1, 2, 3, 4, 5}
+	for j := 0; j < len(arr); j++ {
+		fmt.Println(arr[j])
+	}
+
+	// インデックス番号を表示することができる
+	for j, v := range arr {
+		fmt.Println(j, v)
+	}
+
+	// インデックス番号を表示しない方法
+	for _, v := range arr {
+		fmt.Println(v)
+	}
+
+	// インデックス番号を表示する方法
+	for j := range arr {
+		fmt.Println(j)
+	}
 }
